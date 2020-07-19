@@ -2,12 +2,14 @@ import discord
 from discord.ext import commands
 import random
 from discord.ext.commands import has_permissions, CheckFailure
+import os
 
 
 client = commands.Bot(command_prefix = ',')
 
 @client.event
 async def on_ready():
+    await client.change_presence(status=discord.Status.online, activity=discord.Game('Created with Python, by Androca'))
     print ('Logged in')
 
 @client.event
@@ -65,7 +67,7 @@ async def ban(ctx, member : discord.Member, *, reason=None):
     await ctx.send(f'A VERY GOOD PERSON banned {member}\nReason: {reason}')
 
 @client.command()
-@commands.has_permissions(administrator=True)
+@commands.has_permissions(  administrator=True)
 async def unban(ctx, *, member):
     banned_users = await ctx.guild.bans()
     member_name, member_discriminator = member.split('#')
@@ -78,4 +80,21 @@ async def unban(ctx, *, member):
             await ctx.send(f'Unbanned {user.mention}')
             return
 
+#@client.command()
+#async def load(ctx, extension):
+#    client.load_extension()
+
+#@client.command()
+#async def load(ctx, extension):
+#    client.load_extension(f'cogs.{extension}')
+
+#@client.command()
+#async def unload(ctx, extension):
+#    client.unload_extension(f'cogs.{extension}')
+
+#for filename in os.listdir('./cogs'):
+#    if filename.endswith('.py'):
+#        client.load_extension(f'cogs.{filename[:-3]}')
+
 client.run('NzMzNzI2MjIwNDQ0NzYyMTQz.XxLGlw.HTfIUjT4sTs8m-fn8GNgOw4YJTU')
+

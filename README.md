@@ -1,4 +1,4 @@
-# PUC4 discord bot 
+# discord.py moderation bot
 
 This is the repository for my discord bot named PUC4
 

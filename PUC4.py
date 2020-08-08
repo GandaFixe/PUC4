@@ -55,7 +55,7 @@ async def changeprefix(ctx, prefix):
     await ctx.send(f'Prefix changed to {prefix}')
 # End of change prefix code
 
-# Console print to check if your bot's ready and sets a status
+# Print to check if your bot's ready and sets a status
 @client.event
 async def on_ready():
     change_status.start()

@@ -66,17 +66,6 @@ async def on_ready():
 async def change_status():
     await client.change_presence(activity=discord.Game(next(status)))
 
-# Console print to check who joins server and sends a message in the system channel
-@client.event
-async def on_member_join(self, member):
-        channel= member.guild.system_channel
-        if channel != None:
-            await channel.send(f'Welcome {member.mention}, hope you enjoy this server!')
-
-        else:
-            owner= guild.owner
-            await owner.send('Hi there looks like you didnt set up a system channel, pls set up the system channel for me to welcome people when they join the server')
-
 
 # Console print to check who leaves server
 @client.event

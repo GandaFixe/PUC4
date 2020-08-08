@@ -7,6 +7,10 @@ import random
 from discord.ext.commands import has_permissions, CheckFailure
 import os
 import json
+from itertools import cycle
+
+status= cycle([',help', 'Created with python', 'by Androca', 'https://github.com/GandaFixe/PUC4'])
+
 
 # Change prefix code
 def get_prefix(client, message):
@@ -54,13 +58,25 @@ async def changeprefix(ctx, prefix):
 # Console print to check if your bot's ready and sets a status
 @client.event
 async def on_ready():
-    await client.change_presence(status=discord.Status.online, activity=discord.Game('Created with Python, by Androca'))
+    change_status.start()
     print ('Logged in')
 
-# Console print to check who joins server
+# Cycle to change status    
+@tasks.loop(seconds=3.5)
+async def change_status():
+    await client.change_presence(activity=discord.Game(next(status)))
+
+# Console print to check who joins server and sends a message in the system channel
 @client.event
-async def on_member_join(member):
-    print (f'{member} joined the server')
+async def on_member_join(self, member):
+        channel= member.guild.system_channel
+        if channel != None:
+            await channel.send(f'Welcome {member.mention}, hope you enjoy this server!')
+
+        else:
+            owner= guild.owner
+            await owner.send('Hi there looks like you didnt set up a system channel, pls set up the system channel for me to welcome people when they join the server')
+
 
 # Console print to check who leaves server
 @client.event

@@ -12,7 +12,7 @@ def setup(client):
     client.add_cog(Welcome(client))
 
 # Official class for the Games.py
-class Welcome(commands.Cog):
+class Games(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         self._last_member = None

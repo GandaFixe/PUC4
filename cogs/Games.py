@@ -19,7 +19,7 @@ class Games(commands.Cog):
 
     # Counter command
     @commands.command()
-    async def countdown(ctx, number, signal= None):
+    async def counter(ctx, number, signal= None):
         if number>10:
             await ctx.send('This may spam your channel do you want to proceed?')
             @commands.Cog.listener()
@@ -28,10 +28,10 @@ class Games(commands.Cog):
                     if signal== '-':
                         for x in range(number):
                             
-                            print(number - x)
+                            await ctx.send(number - x)
                     elif signal == '+':
                         for x in range(number):
-                            print (x)
+                            await ctx.send(x)
                 else:
                     await ctx.send('Stopping your counter')
         elif signal == None:
@@ -41,8 +41,9 @@ class Games(commands.Cog):
             if signal== '-':
                 for x in range(number):
                             
-                    print(number - x)
+                    await ctx.send(number - x)
             elif signal == '+':
                 for x in range(number):
-                    print (x)
+                    await ctx.send(x)
+           
            

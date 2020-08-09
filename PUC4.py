@@ -108,43 +108,6 @@ async def _8ball(ctx, *, question):
 "Very doubtful."]
     await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
-# Command that clears messages
-@client.command()
-@commands.has_permissions(manage_messages=True)
-async def clear(ctx, amount=5):
-    amount = amount+1
-    await ctx.channel.purge(limit=amount)
-    await ctx.send(f'{amount-1} messages got destroyed')
-    await ctx.channel.purge(limit=1)
-
-# Command that kicks members
-@client.command()
-@commands.has_permissions(kick_members=True)
-async def kick(ctx, member : discord.Member, *, reason=None):
-    await member.kick(reason=reason)
-    await ctx.send(f'GOD kicked {member}\nReason: {reason}')
-
-# Command that bans members
-@client.command()
-@commands.has_permissions(ban_members=True)
-async def ban(ctx, member : discord.Member, *, reason=None):
-    await member.ban(reason=reason)
-    await ctx.send(f'GOD banned {member}\nReason: {reason}')
-
-# Command that unbans members
-@client.command()
-@commands.has_permissions(ban_members=True)
-async def unban(ctx, *, member):
-    banned_users = await ctx.guild.bans()
-    member_name, member_discriminator = member.split('#')
-
-    for ban_entry in banned_users:
-        user = ban_entry.user
-
-        if (user.name, user.discriminator) == (member_name, member_discriminator):
-            await ctx.guild.unban(user)
-            await ctx.send(f'GOD unbanned {user.mention}')
-            return
 
 # Command for calculator
 @client.command()

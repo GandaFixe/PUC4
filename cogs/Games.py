@@ -9,7 +9,7 @@ import asyncio
 
 # Setup working function 
 def setup(client):
-    client.add_cog(Welcome(client))
+    client.add_cog(Games(client))
 
 # Official class for the Games.py
 class Games(commands.Cog):

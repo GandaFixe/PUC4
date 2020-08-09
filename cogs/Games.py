@@ -19,31 +19,14 @@ class Games(commands.Cog):
 
     # Counter command
     @commands.command()
-    async def counter(ctx, number, signal= None):
-        if number>10:
-            await ctx.send('This may spam your channel do you want to proceed?')
-            @commands.Cog.listener()
-            async def on_message(message):
-                if message== 'yes' or 'YES' or 'Yes':
-                    if signal== '-':
-                        for x in range(number):
+    async def counter(self, ctx, num, signal):
+        number= int(num)
+        if str(signal)== '-':
+            for x in range(number):
                             
-                            await ctx.send(number - x)
-                    elif signal == '+':
-                        for x in range(number):
-                            await ctx.send(x)
-                else:
-                    await ctx.send('Stopping your counter')
-        elif signal == None:
-            await ctx.send('You didnt say how you want the counter to be. Write + for 1, 2, 3..., and write - for 3, 2, 1')
-
-        else:
-            if signal== '-':
-                for x in range(number):
-                            
-                    await ctx.send(number - x)
-            elif signal == '+':
-                for x in range(number):
-                    await ctx.send(x)
-           
-           
+                await ctx.send(number - x)
+                await asyncio.sleep(1)
+        elif str(signal) == '+':
+            for x in range(number):
+                await ctx.send(x)
+                await asyncio.sleep(1)

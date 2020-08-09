@@ -17,9 +17,10 @@ class Games(commands.Cog):
         self.bot = bot
         self._last_member = None
 
-    # Counter command
+    # Force Counter command
+    @commands.has_permissions(administrator=True)
     @commands.command()
-    async def counter(self, ctx, num, signal):
+    async def fcounter(self, ctx, num, signal):
         number= int(num)
         if str(signal)== '-':
             for x in range(number):
@@ -30,3 +31,19 @@ class Games(commands.Cog):
             for x in range(number):
                 await ctx.send(x)
                 await asyncio.sleep(1)
+    
+    @commands.command()
+    async def counter(self, ctx, num, signal):
+        number= int(num)
+        if str(signal)== '-' and number<10:
+            for x in range(number):
+                            
+                await ctx.send(number - x)
+                await asyncio.sleep(1)
+        elif str(signal) == '+' and number<10:
+            for x in range(number):
+                await ctx.send(x+1)
+                await asyncio.sleep(1)
+        else:
+            await ctx.send('Your number is too high! if you have administrator perms and want to count to 1000000... use ,fcounter')
+  

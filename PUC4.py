@@ -24,6 +24,7 @@ client = commands.Bot(command_prefix = get_prefix)
 
 @client.event
 async def on_guild_join(guild):
+    await guild.system.channel.send(f'Thank you for adding me\n Im a fun bot with lots of commands\n You can take a look at my source code here: https://github.com/GandaFixe/PUC4')
     with open('prefixes.json', 'r') as f:
         prefixes = json.load(f)
 

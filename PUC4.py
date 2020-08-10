@@ -78,35 +78,6 @@ async def on_member_remove(member):
 async def on_command_error(ctx, error):
     await ctx.send('I cant specify that command or you did it incorrectly please make sure that the command you typed exists or make sure that the command is typed correctly and with all the arguments if thats not the case please send me a message on discord M4luc0 da g4nz4#4390 or type ,help')
 
-# Commando to check the latency of the bot
-@client.command()
-async def ping(ctx):
-    await ctx.send(f'Pong {round(client.latency * 1000)}ms')
-
-# Just a command for fun
-@client.command(aliases=['8ball'])
-async def _8ball(ctx, *, question):
-    responses = ["It is certain.",
-"It is decidedly so.",
-"Without a doubt.",
-"Yes - definitely.",
-"You may rely on it.",
-"As I see it, yes.",
-"Most likely.",
-"Outlook good.",
-"Yes.",
-"Signs point to yes.",
-"Reply hazy, try again.",
-"Ask again later.",
-"Better not tell you now.",
-"Cannot predict now.",
-"Concentrate and ask again.",
-"Don't count on it.",
-"My reply is no.",
-"My sources say no.",
-"Outlook not so good.",
-"Very doubtful."]
-    await ctx.send(f'Question: {question}\nAnswer: {random.choice(responses)}')
 
 
 # Command for calculator

@@ -8,7 +8,7 @@ This discord bot is based on moderation and has some fun stuff
 
 The bot is developed in python with the discord.py rewrite version
 
-The invite discord bot invite link is https://discord.com/api/oauth2/authorize?client_id=733726220444762143&permissions=8&scope=bot
+The discord bot invite link is https://discord.com/api/oauth2/authorize?client_id=733726220444762143&permissions=8&scope=bot
 
 This discord bot is my first one and I'm still working on it
 
